@@ -1,4 +1,5 @@
-##### Still in development phase
+##### MAD
+It is an object detecion algorithm based on the YOLOv3 and a fast RCNN which prevents adversarial attacks on normal face detection techniques. This is developed with motive of providing better and more accurate surveillance solutions. Scroll down below to see how you can implement this on your own computer.
 
 #### Conda (Recommended)
 
@@ -35,9 +36,6 @@ For Linux: Let's download official yolov3 weights pretrained on COCO dataset.
 ```
 # yolov3
 wget https://pjreddie.com/media/files/yolov3.weights -O weights/yolov3.weights
-
-# yolov3-tiny
-wget https://pjreddie.com/media/files/yolov3-tiny.weights -O weights/yolov3-tiny.weights
 ```
 For Windows:
 You can download the yolov3 weights by clicking [here](https://pjreddie.com/media/files/yolov3.weights) and yolov3-tiny [here](https://pjreddie.com/media/files/yolov3-tiny.weights) then save them to the weights folder.
@@ -50,9 +48,6 @@ Load the weights using `load_weights.py` script. This will convert the yolov3 we
 # yolov3
 python load_weights.py
 
-# yolov3-tiny
-python load_weights.py --weights ./weights/yolov3-tiny.weights --output ./weights/yolov3-tiny.tf --tiny
-```
 
 After executing one of the above lines, you should see .tf files in your weights folder.
 
@@ -64,19 +59,7 @@ Don't forget to set the IoU (Intersection over Union) and Confidence Thresholds 
 
 ### Usage examples
 Let's run an example or two using sample images found within the data/images folder. 
-```bash
-# yolov3
-python detect.py --images "data/images/dog.jpg, data/images/office.jpg"
-
-# yolov3-tiny
-python detect.py --weights ./weights/yolov3-tiny.tf --tiny --images "data/images/dog.jpg"
 
 # webcam
 python detect_video.py --video 0
 
-
-## Acknowledgments
-* [Yolov3 TensorFlow 2 Amazing Implementation](https://github.com/zzh8829/yolov3-tf2)
-* [Another Yolov3 TensorFlow 2](https://github.com/heartkilla/yolo-v3)
-* [Yolo v3 official paper](https://arxiv.org/abs/1804.02767)
-* [A Tensorflow Slim implementation](https://github.com/mystic123/tensorflow-yolo-v3)
