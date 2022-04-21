@@ -9,12 +9,12 @@ from yolov3_tf2.models import (
     YoloV3, YoloV3Tiny)
 from yolov3_tf2.dataset import transform_images
 from yolov3_tf2.utils import draw_outputs
-fd=cv2.CascadeClassifier(r'C:\Users\KIIT\AppData\Local\Programs\Python\Python38\Lib\site-packages\cv2\data\haarcascade_frontalface_alt.xml')
-fd1=cv2.CascadeClassifier(r'C:\Users\KIIT\AppData\Local\Programs\Python\Python38\Lib\site-packages\cv2\data\haarcascade_eye.xml')
-fd2=cv2.CascadeClassifier(r'C:\Users\KIIT\AppData\Local\Programs\Python\Python38\Lib\site-packages\cv2\data\haarcascade_eye_tree_eyeglasses.xml')
-fd4=cv2.CascadeClassifier(r'C:\Users\KIIT\AppData\Local\Programs\Python\Python38\Lib\site-packages\cv2\data\haarcascade_profileface.xml')
+fd=cv2.CascadeClassifier(r'C:\Users\18060\anaconda3\Lib\site-packages\cv2\data\haarcascade_frontalface_alt.xml')
+fd1=cv2.CascadeClassifier(r'C:\Users\18060\anaconda3\Lib\site-packages\cv2\data\haarcascade_eye.xml')
+fd2=cv2.CascadeClassifier(r'C:\Users\18060\anaconda3\Lib\site-packages\cv2\data\haarcascade_eye_tree_eyeglasses.xml')
+fd4=cv2.CascadeClassifier(r'C:\Users\18060\anaconda3\Lib\site-packages\cv2\data\haarcascade_profileface.xml')
 
-
+y = 0
 flags.DEFINE_string('classes', './data/labels/coco.names', 'path to classes file')
 flags.DEFINE_string('weights', './weights/yolov3.tf',
                     'path to weights file')
@@ -26,7 +26,7 @@ flags.DEFINE_string('output', None, 'path to output video')
 flags.DEFINE_string('output_format', 'XVID', 'codec used in VideoWriter when saving video to file')
 flags.DEFINE_integer('num_classes', 80, 'number of classes in the model')
 
-
+count =0
 def main(_argv):
     physical_devices = tf.config.experimental.list_physical_devices('GPU')
     if len(physical_devices) > 0:
@@ -133,7 +133,9 @@ def main(_argv):
                 else:
                     print("Directory " , dirFace ,  " has found.")
                 sub_face = i[100:800, 100:800]
-                FaceFileName = "suspected/face_" + str(y+x) + ".jpg" # folder path and random name image
+                cd
+                FaceFileName = "suspected/face_" + str(count) + ".jpg" # folder path and random name image
+                count = count+1
                 cv2.imwrite(FaceFileName, sub_face)
                 if FLAGS.output:
                     out.write(img)
